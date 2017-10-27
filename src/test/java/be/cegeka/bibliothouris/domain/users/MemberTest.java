@@ -8,17 +8,22 @@ import static org.junit.Assert.*;
 
 public class MemberTest {
     @Test
-    public void createUserTBoneWillReturnCreatedUserTbone() throws Exception {
-        Member member = new Member(1,"kestens", "thibault");
+    public void createUserTBoneWillReturnCreatedUserFirstNameTbone() throws Exception {
+        Member member = new Member("789-45551","Kestens", "Thibault", "Interleuvenlaan",
+        "16A", "3001","Leuven");
 
-        String expected = "[1] kestens thibault";
+        String expected = "Thibault";
+        Assertions.assertThat(member.getFirstName()).isEqualTo(expected);
+    }
+
+    @Test
+    public void createUserTBoneWillReturnCreatedUserTbone() throws Exception {
+        Member member = new Member("789-45551","Kestens", "Thibault", "Interleuvenlaan",
+        "16A", "3001","Leuven");
+
+        String expected = "[789-45551] Kestens Thibault, Interleuvenlaan 16A, 3001 Leuven";
         Assertions.assertThat(member.getDetails()).isEqualTo(expected);
     }
 
-//    @Test
-//    public void createMember_shouldReturnAdminIsFalse() throws Exception {
-//        Member member = new Member(1, "sparrow", "Erwin");
-//
-//        boolean expected = false;
-//    }
+
 }
