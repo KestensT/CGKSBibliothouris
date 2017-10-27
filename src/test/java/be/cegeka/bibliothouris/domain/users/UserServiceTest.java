@@ -54,4 +54,5 @@ public class UserServiceTest {
 
         assertThat(userService.getAllUsers()).containsOnly(user1, user2);
     }
+
 }
