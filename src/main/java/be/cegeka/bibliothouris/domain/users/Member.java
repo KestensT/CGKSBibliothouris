@@ -1,6 +1,6 @@
 package be.cegeka.bibliothouris.domain.users;
 
-public class Member {
+public class Member implements  RegisteredUser{
 
     private long id;
     private String lastName;
@@ -24,13 +24,24 @@ public class Member {
         return firstName;
     }
 
+    @Override
+    public void userDetails(long id, String name) {
+        System.out.println(id + "," + name);
+    }
+
+    @Override
+    public boolean userIsLibrarian(boolean isLibrarian) {
+        return false;
+    }
+
+    @Override
+    public boolean userIsAdmin(boolean isAdmin) {
+        return false;
+    }
 
 
-
-    //    @Override
-//    public void userDetails(long id, String name) {
-//
-
-
+    public String getDetails() {
+        return "[" + id + "] " + lastName + " " + firstName ;
+    }
 }
 
