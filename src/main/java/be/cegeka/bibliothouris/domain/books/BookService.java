@@ -17,4 +17,8 @@ public class BookService {
     public List<Book> getAllBooks() {
         return bookRepository.getAllBooks();
     }
+
+    public List<Book> getOneBookBasedOnISBN(String isbn) {
+        return bookRepository.getOnebOokBasedOnISBN(isbn);
+    }
 }

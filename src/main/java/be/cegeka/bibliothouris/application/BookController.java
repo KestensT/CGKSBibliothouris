@@ -27,4 +27,11 @@ public class BookController {
         bookService.addBook(title, authorLastName, authorFirstName, ISBN);
     }
 
+    @RequestMapping(path = {"/getonebookbasedonisbn"})
+    @GetMapping
+    public List<Book> getOneBookBasedOnISBN(@RequestParam(value="isbn",required = true)String isbn){
+        return bookService.getOneBookBasedOnISBN(isbn);
+    }
+
+
 }
