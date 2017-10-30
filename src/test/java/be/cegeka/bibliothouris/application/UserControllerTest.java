@@ -49,4 +49,18 @@ public class UserControllerTest {
 
         assertThat(userController.getUsers()).containsOnly(user1, user2);
     }
+
+    @Test
+    public void addingMultipleUsersWithALongID_shouldStillWork() throws Exception {
+        User user1 = new User(1l, "Mattia");
+        User user2 = new User(5l, "Len");
+        User user3 = new User(8l, "Erwin");
+        User user4 = new User(4845l, "Ralph");
+        User user5 = new User(100000000l, "Seppe");
+        User user6 = new User(898989565555656l, "Kiki");
+
+        when(userService.getAllUsers()).thenReturn(Arrays.asList(user1, user2, user3, user4, user5, user6));
+
+        assertThat(userController.getUsers()).containsOnly(user1, user2, user3, user4, user5, user6);
+    }
 }
