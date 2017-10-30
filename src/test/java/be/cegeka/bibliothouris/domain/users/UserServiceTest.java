@@ -41,14 +41,14 @@ public class UserServiceTest {
     public void addUser_ShouldCallUserRepository() throws Exception {
         userService.addUser("Seppe");
 
-        verify(userRepository).addUser(new User(5l, "Seppe"));
+        verify(userRepository).addUser(new RegisteredUser(5l, "Seppe"));
     }
 
     @Test
     public void getAllUsers() throws Exception {
-        User user1 = new User(1l, "Seppe");
-        User user2 = new User(2l, "Sanne");
-        User user3 = new User(3l, "Xan");
+        User user1 = new RegisteredUser(1l, "Seppe");
+        User user2 = new RegisteredUser(2l, "Sanne");
+        User user3 = new RegisteredUser(3l, "Xan");
 
         when(userRepository.getAllUsers()).thenReturn(Arrays.asList(user1, user2));
 

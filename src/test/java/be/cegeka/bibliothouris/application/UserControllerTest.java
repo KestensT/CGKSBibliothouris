@@ -1,5 +1,6 @@
 package be.cegeka.bibliothouris.application;
 
+import be.cegeka.bibliothouris.domain.users.RegisteredUser;
 import be.cegeka.bibliothouris.domain.users.User;
 import be.cegeka.bibliothouris.domain.users.UserRepository;
 import be.cegeka.bibliothouris.domain.users.UserService;
@@ -42,8 +43,8 @@ public class UserControllerTest {
 
     @Test
     public void getUsers() throws Exception {
-        User user1 = new User(1l, "Seppe");
-        User user2 = new User(2l, "Sanne");
+        User user1 = new RegisteredUser(1l, "Seppe");
+        User user2 = new RegisteredUser(2l, "Sanne");
 
         when(userService.getAllUsers()).thenReturn(Arrays.asList(user1, user2));
 

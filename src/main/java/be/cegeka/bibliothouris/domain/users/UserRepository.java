@@ -13,7 +13,23 @@ public class UserRepository {
         return users;
     }
 
-    public void addUser(User user){
+    public List<Member> getAllMembers() {
+        List<Member> memberlist = new ArrayList<>();
+        for (User u : getAllUsers()) {
+            if (u.getClass() == Member.class) {
+                memberlist.add((Member) u);
+            }
+        }
+        return memberlist;
+    }
+
+    public void addUser(User user) {
         users.add(user);
     }
+
+
+    public void addMember(Member member) {
+        users.add(member);
+    }
+
 }

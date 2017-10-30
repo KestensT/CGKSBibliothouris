@@ -25,6 +25,16 @@ public class UserController {
         userService.addUser(name);
     }
 
-
-
+    @RequestMapping("/addmember")
+    @PostMapping
+    public void addMember(@RequestParam(value = "screenName", required = true) String screenName,
+                          @RequestParam(value = "inss", required = true) String inss,
+                          @RequestParam(value = "lastName", required = true) String lastName,
+                          @RequestParam(value = "firstName", required = false) String firstName,
+                          @RequestParam(value = "streetName", required = false) String streetName,
+                          @RequestParam(value = "streetNumber", required = false) String streetNumber,
+                          @RequestParam(value = "postalCode", required = false) String postalCode,
+                          @RequestParam(value = "cityName", required = true) String cityName){
+    userService.addMember(screenName, inss, lastName, firstName, streetName, streetNumber, postalCode, cityName);
+    }
 }
