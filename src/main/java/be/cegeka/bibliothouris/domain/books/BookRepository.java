@@ -26,4 +26,8 @@ public class BookRepository {
         }
         return singleBookList;
     }
+
+    public void lendBook(String iSBN) {
+    
+    }
 }

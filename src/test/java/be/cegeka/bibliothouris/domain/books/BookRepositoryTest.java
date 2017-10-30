@@ -17,4 +17,25 @@ public class BookRepositoryTest {
 
         Assertions.assertThat(bib.getOnebOokBasedOnISBN("abc123").get(0)).isEqualTo(testbook2);
     }
+
+    @Test
+    public void checkIfBookIsInLibrary() throws Exception {
+        Book book = new Book("Wild Adventures of Thibault", "Thibault", "Jones", "6969");
+
+        Assertions.assertThat(book.inLibrary()).isTrue();
+    }
+
+    @Test
+    public void checkIfTwoAddedBooksAreInLibrary() throws Exception {
+        Book book = new Book("Wild Adventures of Thibault", "Thibault", "Jones", "6969");
+        BookRepository library = new BookRepository();
+        library.addBook(book);
+        library.addBook(book);
+        library.lendBook("6969");
+
+        assertThat();
+
+    }
+
+
 }
