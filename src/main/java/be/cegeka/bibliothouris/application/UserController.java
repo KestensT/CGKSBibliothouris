@@ -15,10 +15,15 @@ import java.util.List;
 @RequestMapping(path = {"/user"})
 public class UserController {
 
-
     @Inject
     private UserService userService;
 
+    @GetMapping
+    public String showBasicMessage() {
+        return "Welcome, User.";
+    }
+
+    @RequestMapping(path = {"/admin/allusers"})
     @GetMapping
     public List<User> getUsers() {
         return userService.getAllUsers();
@@ -28,7 +33,4 @@ public class UserController {
     public void addUser(@RequestParam(value = "name", required = true) String name) {
         userService.addUser(name);
     }
-
-
-
 }
