@@ -26,11 +26,30 @@ public class BookController {
         bookService.addBook(title, authorLastName, authorFirstName, ISBN);
     }
 
-    @RequestMapping(path = {"/getonebookbasedonisbn"})
+    @RequestMapping(path = "/getonebookbasedonisbn")
     @GetMapping
     public List<Book> getOneBookBasedOnISBN(@RequestParam(value="isbn",required = true)String isbn){
         return bookService.getOneBookBasedOnISBN(isbn);
     }
+
+    @RequestMapping(path = "/searchbyisbn")
+    @GetMapping
+    public List<Book> getAllBooksByPartlyIsbn(@RequestParam(value = "isbnPart",required = true)String isbnPart){
+        return bookService.getAllBooksByPartlyIsbn(isbnPart);
+    }
+
+    @RequestMapping(path = "/searchbytitle")
+    @GetMapping
+    public List<Book> getAllBooksByPartlyTitle(@RequestParam(value = "titlePart",required = true)String titlePart){
+        return bookService.getAllBooksByPartlyTitle(titlePart);
+    }
+
+    @RequestMapping(path = "/searchbyauthor")
+    @GetMapping
+    public List<Book> getAllBooksByPartlyAuthor(@RequestParam(value = "authorPart",required = true)String authorPart){
+        return bookService.getAllBooksByPartlyAuthor(authorPart);
+    }
+
 
 
 }

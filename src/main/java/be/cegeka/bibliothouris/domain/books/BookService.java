@@ -8,10 +8,9 @@ import java.util.concurrent.atomic.AtomicLong;
 @Named
 public class BookService {
 
+    private final AtomicLong counter = new AtomicLong();
     @Inject
     private BookRepository bookRepository;
-
-    private final AtomicLong counter = new AtomicLong();
 
     public void addBook(String bookTitle, String authorLastName, String authorFirstName, String iSBN) {
         bookRepository.addBook(new Book(bookTitle, authorLastName, authorFirstName, iSBN));
@@ -23,5 +22,15 @@ public class BookService {
 
     public List<Book> getOneBookBasedOnISBN(String isbn) {
         return bookRepository.getOnebOokBasedOnISBN(isbn);
+    }
+
+    public List<Book> getAllBooksByPartlyIsbn(String isbnPart) {
+        return bookRepository.getAllBooksByPartlyIsbn(isbnPart);
+    }
+    public List<Book> getAllBooksByPartlyTitle(String titlePart) {
+        return bookRepository.getAllBooksByPartlyTitle(titlePart);
+    }
+    public List<Book> getAllBooksByPartlyAuthor(String authorPart) {
+        return bookRepository.getAllBooksByPartlyAuthor(authorPart);
     }
 }
