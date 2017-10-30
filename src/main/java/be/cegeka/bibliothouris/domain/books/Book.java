@@ -1,17 +1,22 @@
 package be.cegeka.bibliothouris.domain.books;
 
+import java.time.LocalDate;
+
 public class Book {
 
     private String title;
     private String authorLastName;
     private String authorFirstName;
     private String ISBN;
+    private boolean bookInLibrary;
+    private LocalDate dueDate;
 
     public Book(String title, String authorLastName, String authorFirstName, String ISBN) {
         this.title = title;
         this.authorLastName = authorLastName;
         this.authorFirstName = authorFirstName;
         this.ISBN = ISBN;
+        this.bookInLibrary = true;
     }
 
     public String getTitle() {
@@ -28,6 +33,10 @@ public class Book {
 
     public String getISBN() {
         return ISBN;
+    }
+
+    public boolean inLibrary() {
+        return bookInLibrary;
     }
 
     @Override
@@ -52,5 +61,9 @@ public class Book {
         result = 31 * result + (authorFirstName != null ? authorFirstName.hashCode() : 0);
         result = 31 * result + (ISBN != null ? ISBN.hashCode() : 0);
         return result;
+    }
+    public void lendBook(){
+        bookInLibrary = false;
+        dueDate = LocalDate.now().plusWeeks(3);
     }
 }

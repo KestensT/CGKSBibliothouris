@@ -50,9 +50,9 @@ public class UserServiceTest {
         User user2 = new RegisteredUser(2l, "Sanne");
         User user3 = new RegisteredUser(3l, "Xan");
 
-        when(userRepository.getAllUsers()).thenReturn(Arrays.asList(user1, user2));
+        when(userRepository.getAllUsers()).thenReturn(Arrays.asList(user1, user2, user3));
 
-        assertThat(userService.getAllUsers()).containsOnly(user1, user2);
+        assertThat(userService.getAllUsers()).containsOnly(user1, user2, user3);
     }
 
 }
