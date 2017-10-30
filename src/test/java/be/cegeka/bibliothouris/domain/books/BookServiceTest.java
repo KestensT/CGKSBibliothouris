@@ -1,5 +1,6 @@
 package be.cegeka.bibliothouris.domain.books;
 
+import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -9,7 +10,11 @@ import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 import org.springframework.test.util.ReflectionTestUtils;
 
-import static org.junit.Assert.*;
+import java.util.Arrays;
+import java.util.concurrent.atomic.AtomicLong;
+
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class BookServiceTest {
 
@@ -22,8 +27,27 @@ public class BookServiceTest {
     @Mock
     private BookRepository bookRepository;
 
-   @Test
-    public void addBook_shouldAddABookToRepository() throws Exception{
-   }
+    @Before
+    public void addBook_shouldAddABookToRepository() throws Exception {
+        ReflectionTestUtils.setField(bookService, "counter", new AtomicLong(41));
+    }
 
+    @Test
+    public void addBook_shouldCallBookRepository() throws Exception {
+        bookService.addBook("A", "Romeo", "Mattia", "123");
+
+        verify(bookRepository).addBook(new Book("A", "Romeo", "Mattia", "123"));
+    }
+
+    @Test
+    public void getAllBooks() throws Exception {
+        Book book1 = new Book("A", "Romeo", "Mattia", "123");
+        Book book2 = new Book("B", "Karpisek", "Len", "456");
+        Book book3 = new Book("C", "Vancampenhoudt", "Ralph", "789");
+        Book book4 = new Book("D", "Jacobs", "Erwin", "1011");
+
+        when(bookRepository.getAllBooks()).thenReturn(Arrays.asList(book1, book2, book3, book4));
+
+        Assertions.assertThat(bookService.getAllBooks()).containsOnly(book1, book2, book3, book4);
+    }
 }
