@@ -73,4 +73,5 @@ public class BookControllerTest {
 
         Assertions.assertThat(bookController.getAllBooks()).containsOnly(book1, book2, book3, book4, book5);
     }
+
 }
