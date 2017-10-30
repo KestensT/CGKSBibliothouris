@@ -1,6 +1,6 @@
 package be.cegeka.bibliothouris.domain.users;
 
-public class Member implements RegisteredUser {
+public class Member extends User {
 
     private String inss;
     private String lastName;
@@ -10,8 +10,12 @@ public class Member implements RegisteredUser {
     private String postalCode;
     private String cityName;
 
-    public Member(String inss, String lastName, String firstName, String streetName, String streetNumber, String postalCode, String cityName) {
-//        super(id, name);
+
+    public Member(long id, String screenName, String inss, String lastName, String firstName, String streetName, String streetNumber, String postalCode, String cityName) {
+
+        super(id, screenName, "member");
+
+
         this.inss = inss;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -49,18 +53,6 @@ public class Member implements RegisteredUser {
         return cityName;
     }
 
-    @Override
-    public void userDetails(long id, String name) {
-        System.out.println(id + "," + name);
-    }
 
-    @Override
-    public void requestBookDetails() {
-
-    }
-
-    public String getDetails() {
-        return "[" + getInss() + "] " + getLastName() + " " + getFirstName() + ", " + getStreetName() + " " + getStreetNumber() + ", " + getPostalCode() + " " + getCityName() ;
-    }
 }
 

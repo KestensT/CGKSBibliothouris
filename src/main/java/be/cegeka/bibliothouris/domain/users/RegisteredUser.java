@@ -1,8 +1,17 @@
 package be.cegeka.bibliothouris.domain.users;
 
-public interface RegisteredUser {
+public class RegisteredUser extends User{
+    private String functie;
 
-    void userDetails(long id, String name);
+    public RegisteredUser(long id, String screenName) {
+        super(id, screenName);
+    }
 
-    void requestBookDetails();
-   }
+
+    @Override
+    public String checkFunctie() {
+        return this.functie;
+    }
+
+
+}

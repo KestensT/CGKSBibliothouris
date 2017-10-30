@@ -10,14 +10,23 @@ public class UserService {
 
     @Inject
     private UserRepository userRepository;
+    @Inject
+    private Memberfactory memberfactory;
 
     private final AtomicLong counter = new AtomicLong();
 
-    public void addUser(String name){
-        userRepository.addUser(new User(counter.incrementAndGet() , name));
+    public void addUser(String name) {
+        userRepository.addUser(new RegisteredUser(counter.incrementAndGet(), name));
     }
 
     public List<User> getAllUsers() {
         return userRepository.getAllUsers();
+    }
+
+    public void addMember(String screenName, String inss, String lastName, String firstName, String streetName, String streetNumber, String postalCode, String cityName) {
+        userRepository.addMember(memberfactory.createNewMember((counter.incrementAndGet()), screenName, inss, lastName, firstName, streetName, streetNumber, postalCode, cityName));
+
+
+
     }
 }
