@@ -16,7 +16,5 @@ public class BookRepositoryTest {
         bib.addBook(testbook2);
 
         Assertions.assertThat(bib.getOnebOokBasedOnISBN("abc123").get(0)).isEqualTo(testbook2);
-
-
     }
 }

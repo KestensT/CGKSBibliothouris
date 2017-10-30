@@ -20,6 +20,7 @@ public class BookController {
         return bookService.getAllBooks();
     }
 
+    @RequestMapping(path = {"/librarian"})
     @PostMapping
     public void addBook(@RequestParam(value = "title", required = true) String title, @RequestParam(value = "authorLastName", required = true) String authorLastName,
                         @RequestParam(value = "authorFirstName", required = true) String authorFirstName, @RequestParam(value = "ISBN", required = true) String ISBN) {
@@ -31,6 +32,5 @@ public class BookController {
     public List<Book> getOneBookBasedOnISBN(@RequestParam(value="isbn",required = true)String isbn){
         return bookService.getOneBookBasedOnISBN(isbn);
     }
-
 
 }
