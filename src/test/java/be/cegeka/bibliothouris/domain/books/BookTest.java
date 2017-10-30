@@ -1,5 +1,6 @@
 package be.cegeka.bibliothouris.domain.books;
 
+import be.cegeka.bibliothouris.domain.users.RegisteredUser;
 import be.cegeka.bibliothouris.domain.users.User;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
@@ -119,7 +120,7 @@ public class BookTest {
 
     @Test
     public void assertThatANewCreatedBookIsInTheLibrary_True() throws Exception {
-        User lendingUser = new User(1l, "Thibault");
+        User lendingUser = new RegisteredUser(1l, "Thibault");
         Book lendingbook = new Book("Wild Adventures of Thibault", "Thibault", "Jones", "6969");
 
         assertThat(lendingbook.inLibrary()).isTrue();
