@@ -79,7 +79,7 @@ public class BookRepository {
         int count = 0;
 
         for (Book book : books) {
-            if(book.getISBN().equals(iSBN)&& book.inLibrary()){
+            if (book.getISBN().equals(iSBN) && book.inLibrary()) {
                 count++;
             }
         }
@@ -87,17 +87,26 @@ public class BookRepository {
     }
 
     public void lendBook(String iSBN) {
-         if(amountofBooksISBN(iSBN)!= 0){
-             getABookByIsbn(iSBN).lendBook();
-         }
+        if (amountofBooksISBN(iSBN) != 0) {
+            getABookByIsbn(iSBN).lendBook();
+        }
 
     }
-    public Book getABookByIsbn(String isbn){
+
+    public Book getABookByIsbn(String isbn) {
         for (Book book : books) {
-            if(book.getISBN().equals(isbn)){
+            if (book.getISBN().equals(isbn)) {
                 return book;
             }
         }
         return null;
+    }
+
+    public void turnBookBackIn(String iSBN) {
+        for (Book book : books) {
+            if (book.getISBN().equals(iSBN) && !book.inLibrary()) {
+                book.turnBookBackToLibrary();
+            }
+        }
     }
 }

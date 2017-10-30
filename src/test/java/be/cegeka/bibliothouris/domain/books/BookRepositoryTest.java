@@ -92,4 +92,18 @@ public class BookRepositoryTest {
 
         assertThat(bib.amountofBooksISBN("6969")).isEqualTo(1);
     }
+
+    @Test
+    public void lendBookWhichWillBeTurnedBackInOnTime() throws Exception {
+        Book book = new Book("Wild Adventures of Thibault", "Thibault", "Jones", "6969");
+        Book book2 = new Book("Wild Adventures of Thibault", "Thibault", "Jones", "6969");
+        bib.addBook(book);
+        bib.addBook(book2);
+        bib.lendBook("6969");
+        bib.turnBookBackIn("6969");
+
+        assertThat(bib.amountofBooksISBN("6969")).isEqualTo(2);
+    }
+
+
 }

@@ -65,5 +65,16 @@ public class Book {
     public void lendBook(){
         bookInLibrary = false;
         dueDate = LocalDate.now().plusWeeks(3);
+
+    }public void lendBook(LocalDate nonStandardDueDate){
+        bookInLibrary = false;
+        dueDate = nonStandardDueDate;
+    }
+
+    public void turnBookBackToLibrary() {
+        bookInLibrary = true;
+        if(LocalDate.now().isAfter(dueDate)){
+            throw new IllegalArgumentException("You're LATE!");
+        }
     }
 }
