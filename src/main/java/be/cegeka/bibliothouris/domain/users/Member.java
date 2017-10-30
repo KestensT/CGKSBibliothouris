@@ -1,6 +1,6 @@
 package be.cegeka.bibliothouris.domain.users;
 
-public class Member implements RegisteredUser{
+public class Member implements RegisteredUser {
 
     private String inss;
     private String lastName;
@@ -11,6 +11,7 @@ public class Member implements RegisteredUser{
     private String cityName;
 
     public Member(String inss, String lastName, String firstName, String streetName, String streetNumber, String postalCode, String cityName) {
+//        super(id, name);
         this.inss = inss;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -55,7 +56,7 @@ public class Member implements RegisteredUser{
 
     @Override
     public void requestBookDetails() {
-        
+
     }
 
     public String getDetails() {
