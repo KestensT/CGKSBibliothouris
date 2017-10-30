@@ -30,10 +30,6 @@ public class BookRepository {
         return singleBookList;
     }
 
-    public void lendBook(String iSBN) {
-
-    }
-
     public List<Book> getAllBooksByPartlyIsbn(String isbnPart) {
 
         List<Book> possibleMatches = new ArrayList<>();
@@ -77,5 +73,31 @@ public class BookRepository {
             }
         }
         return possibleMatches;
+    }
+
+    public int amountofBooksISBN(String iSBN) {
+        int count = 0;
+
+        for (Book book : books) {
+            if(book.getISBN().equals(iSBN)&& book.inLibrary()){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public void lendBook(String iSBN) {
+         if(amountofBooksISBN(iSBN)!= 0){
+             getABookByIsbn(iSBN).lendBook();
+         }
+
+    }
+    public Book getABookByIsbn(String isbn){
+        for (Book book : books) {
+            if(book.getISBN().equals(isbn)){
+                return book;
+            }
+        }
+        return null;
     }
 }

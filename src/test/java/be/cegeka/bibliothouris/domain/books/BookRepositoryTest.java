@@ -65,11 +65,31 @@ public class BookRepositoryTest {
         BookRepository library = new BookRepository();
         library.addBook(book);
         library.addBook(book);
-        library.lendBook("6969");
 
-        assertThat();
-
+        assertThat(library.amountofBooksISBN("6969")).isEqualTo(2);
     }
 
+    @Test
+    public void checkIfThreeAddedBooksWithDifferentISBNAreNotCounted_OneBookShouldBeReturned() throws Exception {
+        Book book = new Book("Wild Adventures of Thibault", "Thibault", "Jones", "6969");
+        Book book2 = new Book("Wild Adventures of Thibault", "Thibault", "Jones", "8000");
+        Book book3 = new Book("Wild Adventures of Thibault", "Thibault", "Jones", "9000");
+        BookRepository library = new BookRepository();
+        library.addBook(book);
+        library.addBook(book2);
+        library.addBook(book3);
 
+        assertThat(library.amountofBooksISBN("6969")).isEqualTo(1);
+    }
+
+    @Test
+    public void lendBookToUserWillDecreaseAmountOfSameISBNBooksByOne() throws Exception {
+        Book book = new Book("Wild Adventures of Thibault", "Thibault", "Jones", "6969");
+        Book book2 = new Book("Wild Adventures of Thibault", "Thibault", "Jones", "6969");
+        bib.addBook(book);
+        bib.addBook(book2);
+        bib.lendBook("6969");
+
+        assertThat(bib.amountofBooksISBN("6969")).isEqualTo(1);
+    }
 }

@@ -62,5 +62,8 @@ public class Book {
         result = 31 * result + (ISBN != null ? ISBN.hashCode() : 0);
         return result;
     }
-
+    public void lendBook(){
+        bookInLibrary = false;
+        dueDate = LocalDate.now().plusWeeks(3);
+    }
 }
