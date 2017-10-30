@@ -28,8 +28,8 @@ public class BookServiceTest {
     private BookRepository bookRepository;
 
     @Before
-    public void addBook_shouldAddABookToRepository() throws Exception {
-        ReflectionTestUtils.setField(bookService, "counter", new AtomicLong(41));
+    public void setUp() throws Exception {
+        ReflectionTestUtils.setField(bookService, "counter", new AtomicLong(4l));
     }
 
     @Test
